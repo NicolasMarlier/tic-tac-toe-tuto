@@ -1,0 +1,88 @@
+# Tic, tac, toe.
+
+Learn code basics with Tic, tac, toe.
+
+## 4- CSS
+Wow.
+
+### What we aim
+[See demo](4-css.html)
+
+### New concepts
+- Writing CSS
+- CSS properties
+- Basic selectors
+- Advanced selectors
+
+### Code
+
+```html
+<style>
+    body {
+        background: #f0f0f0;
+        font-family: sans-serif;
+    }
+    h1 {
+        text-align: center;
+        font-size: 36px;
+        padding: 20px 0;
+    }
+    #notice {
+        text-align: center;
+        font-size: 18px;
+    }
+    #tic-tac-toe {
+        width: 300px;
+        height: 300px;
+        margin: 40px auto;
+        border-right: 1px solid #aaa;
+        border-bottom: 1px solid #aaa;
+        border-radius: 20px 20px 20px 20px;
+        background: white;
+    }
+    .cell {
+        border-top: 1px solid #aaa;
+        border-left: 1px solid #aaa;
+        height: 99px;
+        width: 99px;
+        float:left;
+        text-align: center;
+        font-size: 60px;
+        line-height: 99px;
+        user-select: none;
+        cursor: default;
+    }
+    .cell:nth-child(1)  {
+        border-radius: 20px 0px 0 0;
+    }
+    .cell:nth-child(3) {
+        border-radius: 0px 20px 0 0;    
+    }
+    .cell:nth-child(7) {
+        border-radius: 0px 0px 0 20px;  
+    }
+    .cell:nth-child(9) {
+        border-radius: 0px 0px 20px 0px;
+    }
+    .cell:not(.played) {
+        cursor: pointer;
+    }
+    .cell:not(.played):hover {
+        background: #fafafa;
+        border-color: #666;
+    }
+    #replay-button {
+        margin: 0 auto;
+        width: 80px;
+        text-align: center;
+        border: 1px solid #aaa;
+        background: white;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 4px;
+    }
+    #replay-button:hover {
+        background: #fafafa;
+    }
+</style>
+```
