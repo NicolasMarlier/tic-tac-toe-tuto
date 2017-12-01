@@ -1,6 +1,6 @@
 var userToPlay;
 var resetGame = function() {
-    $(".cell").html("").removeClass("played");
+    $(".cell").html("").removeClass("played epic");
     userToPlay = 1;
     $("#notice").html("Player 1 to play");
     $("#replay-button").hide();
@@ -27,7 +27,7 @@ var checkVictory = function() {
 			return 0;
 		}
 	});
-	
+
 	for(var i=0; i<lines.length; i++) {
 		var line = lines[i];
 		var values = [];
@@ -60,7 +60,7 @@ var checkVictory = function() {
 		return {
 			player: 0
 		};
-	} 
+	}
 	else {
 		return {
 			player: -1
@@ -80,7 +80,7 @@ var nextTurn = function() {
         for(var i=0; i<victory.cells.length; i++) {
 			var cellIndex = victory.cells[i];
 			$(".cell:eq(" + cellIndex + ")").addClass("epic").addClass("epic-once");
-			
+
 		}
 		setTimeout(function() {
 			for(var i=0; i<victory.cells.length; i++) {
@@ -92,7 +92,7 @@ var nextTurn = function() {
 	}
 	else {
 		userToPlay = (userToPlay) % 2 + 1;
-    	$("#notice").html("Player " + userToPlay + " to play");	
+    	$("#notice").html("Player " + userToPlay + " to play");
 	}
 };
 

@@ -2,21 +2,127 @@
 
 Learn code basics with Tic, tac, toe.
 
-## 5- Organizing in files
-Because it's beginning to look messy.
+## 6- Special effects
+Another level of Wow.
 
 ### New concepts
-- Including files in HTML
+- CSS Transitions
+- SetTimeout
 
 ### New code
 
-```html
-<head>
-    <script src="jquery.js"></script>
-    <script src="5-organizing.js"></script>
-    <link href="5-organizing.css" rel="stylesheet"/>
-</head>
+tictactoe.css
+```css
+.cell.epic {
+    background: #56c356;
+    color: white;
+    transition-duration: 0.3s;
+    transition-property: font-size;
+}
+.cell.epic-once {
+    font-size: 100px;
+}
 ```
+
+tictactoe.js
+```js
+var checkVictory = function() {
+	var lines = [
+		[0, 1, 2],
+		[3, 4, 5],
+		[6, 7, 8],
+		[0, 3, 6],
+		[1, 4, 7],
+		[2, 5, 8],
+		[0, 4, 8],
+		[2, 4, 6]
+		];
+	var cellsArray = $(".cell").map(function() {
+		if($(this).html() == "x") {
+			return 1;
+		}
+		else if($(this).html() == "o") {
+			return 2;
+		}
+		else {
+			return 0;
+		}
+	});
+
+	for(var i=0; i<lines.length; i++) {
+		var line = lines[i];
+		var values = [];
+		for(var j=0; j<line.length; j++) {
+			var cellIndex = line[j];
+			var value = cellsArray[cellIndex];
+			values.push(value);
+		}
+		if(values.toString() == [1, 1, 1].toString()) {
+			return {
+				player: 1,
+				cells: line
+			};
+		}
+		else if(values.toString() == [2, 2, 2].toString()) {
+			return {
+				player: 2,
+				cells: line
+			};
+		}
+	}
+
+	var drawGame = true;
+	for(var i=0; i<cellsArray.length; i++) {
+		if(cellsArray[i] == 0) {
+			drawGame = false;
+		}
+	}
+	if(drawGame) {
+		return {
+			player: 0
+		};
+	}
+	else {
+		return {
+			player: -1
+		};
+	}
+}
+```
+
+tictactoe.js
+```js
+var nextTurn = function() {
+	var victory = checkVictory();
+	if(victory.player == 0) {
+		$("#notice").html("Draw game...");
+        $("#replay-button").show();
+        userToPlay = -1;
+	}
+	else if(victory.player > 0) {
+		$("#notice").html("Player " + victory.player + " won!");
+        $("#replay-button").show();
+        for(var i=0; i<victory.cells.length; i++) {
+			var cellIndex = victory.cells[i];
+			$(".cell:eq(" + cellIndex + ")").addClass("epic").addClass("epic-once");
+
+		}
+		setTimeout(function() {
+			for(var i=0; i<victory.cells.length; i++) {
+				var cellIndex = victory.cells[i];
+				$(".cell:eq(" + cellIndex + ")").removeClass("epic-once");
+			}
+		}, 300);
+		userToPlay = -1;
+	}
+	else {
+		userToPlay = (userToPlay) % 2 + 1;
+    	$("#notice").html("Player " + userToPlay + " to play");
+	}
+};
+```
+
+
 
 ### All code
 
@@ -52,7 +158,7 @@ tictactoe.js
 ```js
 var userToPlay;
 var resetGame = function() {
-    $(".cell").html("").removeClass("played");
+    $(".cell").html("").removeClass("played epic");
     userToPlay = 1;
     $("#notice").html("Player 1 to play");
     $("#replay-button").hide();
@@ -89,10 +195,16 @@ var checkVictory = function() {
 			values.push(value);
 		}
 		if(values.toString() == [1, 1, 1].toString()) {
-			return 1;
+			return {
+				player: 1,
+				cells: line
+			};
 		}
 		else if(values.toString() == [2, 2, 2].toString()) {
-			return 2;
+			return {
+				player: 2,
+				cells: line
+			};
 		}
 	}
 
@@ -103,23 +215,38 @@ var checkVictory = function() {
 		}
 	}
 	if(drawGame) {
-		return 0;
+		return {
+			player: 0
+		};
 	}
 	else {
-		return -1;
+		return {
+			player: -1
+		};
 	}
 }
 var nextTurn = function() {
 	var victory = checkVictory();
-	if(victory == 0) {
+	if(victory.player == 0) {
 		$("#notice").html("Draw game...");
         $("#replay-button").show();
         userToPlay = -1;
 	}
-	else if(victory > 0) {
-		$("#notice").html("Player " + victory + " won!");
+	else if(victory.player > 0) {
+		$("#notice").html("Player " + victory.player + " won!");
         $("#replay-button").show();
-        userToPlay = -1;
+        for(var i=0; i<victory.cells.length; i++) {
+			var cellIndex = victory.cells[i];
+			$(".cell:eq(" + cellIndex + ")").addClass("epic").addClass("epic-once");
+
+		}
+		setTimeout(function() {
+			for(var i=0; i<victory.cells.length; i++) {
+				var cellIndex = victory.cells[i];
+				$(".cell:eq(" + cellIndex + ")").removeClass("epic-once");
+			}
+		}, 300);
+		userToPlay = -1;
 	}
 	else {
 		userToPlay = (userToPlay) % 2 + 1;
@@ -204,6 +331,15 @@ h1 {
 .cell:not(.played):hover {
     background: #fafafa;
     border-color: #666;
+}
+.cell.epic {
+    background: #56c356;
+    color: white;
+    transition-duration: 0.3s;
+    transition-property: font-size;
+}
+.cell.epic-once {
+    font-size: 100px;
 }
 #replay-button {
     margin: 0 auto;
