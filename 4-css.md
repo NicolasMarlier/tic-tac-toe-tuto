@@ -1,6 +1,4 @@
-# Tic, tac, toe.
-
-Learn code basics with Tic, tac, toe.
+<!-- include(header.md) -->
 
 ## 4- CSS
 Wow.
@@ -14,7 +12,7 @@ Wow.
 - Basic selectors
 - Advanced selectors
 
-### Code
+### New code
 
 ```html
 <style>
@@ -85,4 +83,9 @@ Wow.
         background: #fafafa;
     }
 </style>
+```
+
+### All code
+```html
+<!-- include(4-css.html) -->
 ```

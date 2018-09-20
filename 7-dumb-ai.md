@@ -1,6 +1,4 @@
-# Tic, tac, toe.
-
-Learn code basics with Tic, tac, toe.
+<!-- include(header.md) -->
 
 ## 7- Dumb AI
 She can win, but you got to help her out.

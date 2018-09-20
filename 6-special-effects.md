@@ -1,6 +1,4 @@
-# Tic, tac, toe.
-
-Learn code basics with Tic, tac, toe.
+<!-- include(header.md) -->
 
 ## 6- Special effects
 Another level of Wow.

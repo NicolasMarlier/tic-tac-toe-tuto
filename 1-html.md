@@ -1,6 +1,4 @@
-# Tic, tac, toe.
-
-Learn code basics with Tic, tac, toe.
+<!-- include(header.md) -->
 
 ## 1- HTML
 Static Tic Tac Toe. It looks like a Tic Tac Toe, except you cannot play.
@@ -15,27 +13,5 @@ Static Tic Tac Toe. It looks like a Tic Tac Toe, except you cannot play.
 ### New code
 tictactoe.html
 ```html
-<html>
-    <body>
-        <h1>Tic tac toe</h1>
-        <div>We are gonna play Tic Tac Toe</div>
-        <table>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            /tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
-    </body>
-</html>
+<!-- include(1-html.html) -->
 ```

@@ -50,6 +50,6 @@ She can win, but you got to help her out.
 - Code refactoring
 
 ### [8- Skynet-level AI](8-skynet.md.html)
-You cannot win anymore.
+Not cool anymore, now you cannot win.
 - Basic AI algorithm
 - Implementing an algorithm

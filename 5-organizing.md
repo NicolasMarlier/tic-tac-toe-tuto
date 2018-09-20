@@ -1,6 +1,4 @@
-# Tic, tac, toe.
-
-Learn code basics with Tic, tac, toe.
+<!-- include(header.md) -->
 
 ## 5- Organizing in files
 Because it's beginning to look messy.
